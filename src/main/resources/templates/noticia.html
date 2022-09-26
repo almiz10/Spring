@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>egg </title>
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  
+
+  </head>
+  <body>
+     
+    <div>
+        
+	<div >
+		<div class="col-md-12">
+			<img alt="Egg" src="/img/Egg.png">
+			
+			<div class="jumbotron">
+				<h2>
+					EggNews
+				</h2>
+				<p>
+					Este es el portal de noticias de Egg. Enterate de todas las novedades aquí
+				</p>
+				
+			</div>
+                        
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+				 
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					
+					<form class="form-inline">
+						 
+						<a class="btn btn-primary btn-large" href="/noticia/crear">Crear</a>
+						
+					</form>
+					
+				</div>
+			</nav>
+                        <p>
+                            
+                             
+                        </p>
+		</div>
+	</div>
+        
+
+        
+        <div th:if="${error != null}" class="alert alert-danger" role="alert">
+                                <div>
+                                    <h5>Error</h5>
+                                    <p th:text="${error}"></p>
+                                </div>
+                            </div>  
+				
+				<div th:if="${exito != null}" class="alert alert-danger" role="alert">
+                                <div >
+                                    <h5 class="alert alert-danger" role="alert">Exito</h5>
+                                    <p th:text="${exito}" class="alert alert-danger" role="alert">/p>
+                                </div>
+                            </div>
+	<div class="row" th:each="variable : ${noticias}">
+		<div class="col-md-12">
+			<div class="card bg-default">
+				<h5 class="card-header" th:text="${variable.titulo}">
+					
+				</h5>
+				<div class="card-body">
+					<p class="card-text" th:text="${variable.cuerpo}">
+						
+					</p>
+				
+                            
+                                <p>
+					<a class="btn btn-primary btn-large" th:href="@{/noticia/modificar/__${variable.id}__}">Modificar</a>
+                                        <a class="btn btn-danger" th:href="@{/noticia/eliminar/__${variable.id}__}">Eliminar</a>
+                                </p>
+                                
+			</div>
+		</div>
+	
+	</div>
+            
+            
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
